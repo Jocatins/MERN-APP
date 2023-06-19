@@ -33,3 +33,11 @@ npm create vite@latest frontend
 To run both the frontend and the backend concurrently
 `npm i -D concurrently`
 `npm run dev`
+
+# Installed packages
+
+npm i react-router-dom react-router-bootstrap
+
+npm i @reduxjs/toolkit react-redux
+
+npm i react-toastify

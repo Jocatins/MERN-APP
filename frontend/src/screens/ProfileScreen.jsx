@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import { Form, Button } from "react-bootstrap";
 import FormContainer from "../components/FormContainer";
 import { useDispatch, useSelector } from "react-redux";
@@ -46,6 +47,7 @@ const ProfileScreen = () => {
 				toast.error(err?.data?.message || err.error);
 			}
 		}
+		navigate("/");
 	};
 	return (
 		<FormContainer>
@@ -89,9 +91,15 @@ const ProfileScreen = () => {
 				</Form.Group>
 
 				{isLoading && <Loader />}
-				<Button type="submit" variant="primary" className="mt-3">
+
+				<Button type="submit" variant="primary" className="mt-3 me-2">
 					Update
 				</Button>
+				<LinkContainer to="/">
+					<Button variant="primary" className="mt-3">
+						Back
+					</Button>
+				</LinkContainer>
 			</Form>
 		</FormContainer>
 	);

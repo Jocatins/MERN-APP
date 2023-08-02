@@ -23,7 +23,7 @@ const LoginScreen = () => {
 	// We use useEffect to redirect the user to home screen
 	useEffect(() => {
 		if (userInfo) {
-			navigate("/");
+			navigate("/dashboard");
 		}
 	}, [navigate, userInfo]);
 
@@ -39,40 +39,44 @@ const LoginScreen = () => {
 		}
 	};
 	return (
-		<FormContainer>
-			<h3>Sign In</h3>
-			<Form onSubmit={submitHandler}>
-				<Form.Group className="my-2" controlId="email">
-					<Form.Label>Email Address</Form.Label>
-					<Form.Control
-						type="email"
-						placeholder="Enter Email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-					></Form.Control>
-				</Form.Group>
-				<Form.Group className="my-2" controlId="email">
-					<Form.Label>Password</Form.Label>
-					<Form.Control
-						type="password"
-						placeholder="Enter password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					></Form.Control>
-				</Form.Group>
+		<>
+			{/* <div className="login template d-flex justify-content-center align-items-center 100-w vh-100 bg-primary"> */}
+			<FormContainer>
+				<h3>Sign In</h3>
+				<Form onSubmit={submitHandler}>
+					<Form.Group className="my-2 " controlId="email">
+						<Form.Label>Email Address</Form.Label>
+						<Form.Control
+							type="email"
+							placeholder="Enter Email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						></Form.Control>
+					</Form.Group>
+					<Form.Group className="my-2" controlId="email">
+						<Form.Label>Password</Form.Label>
+						<Form.Control
+							type="password"
+							placeholder="Enter password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						></Form.Control>
+					</Form.Group>
 
-				{isLoading && <Loader />}
+					{isLoading && <Loader />}
 
-				<Button type="submit" variant="primary" className="mt-3">
-					Sign In
-				</Button>
-				<Row className="py-3">
-					<Col>
-						New Customer? <Link to="/register">Register</Link>
-					</Col>
-				</Row>
-			</Form>
-		</FormContainer>
+					<Button type="submit" variant="primary" className="mt-3">
+						Sign In
+					</Button>
+					<Row className="py-3">
+						<Col>
+							New Customer? <Link to="/register">Register</Link>
+						</Col>
+					</Row>
+				</Form>
+			</FormContainer>
+			{/* </div> */}
+		</>
 	);
 };
 

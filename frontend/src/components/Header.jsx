@@ -1,5 +1,5 @@
-import { Navbar, Nav, Container, NavDropdown, Badge } from "react-bootstrap";
-import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { FaSignInAlt, FaSignOutAlt, FaStoreAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -27,7 +27,7 @@ const Header = () => {
 
 	return (
 		<header>
-			<Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+			<Navbar bg="dark" variant="dark" expand="sm" collapseOnSelect>
 				<Container>
 					<LinkContainer to="/">
 						<Navbar.Brand>MERN Auth</Navbar.Brand>
@@ -38,6 +38,13 @@ const Header = () => {
 						<Nav className="ms-auto">
 							{userInfo ? (
 								<>
+									<LinkContainer to="/store">
+										<Nav.Link>
+											<FaStoreAlt />
+											Store
+										</Nav.Link>
+									</LinkContainer>
+
 									<NavDropdown
 										title={userInfo.name}
 										id="username"

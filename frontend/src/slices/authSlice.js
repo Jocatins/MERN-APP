@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // this will check localStorage for user-info
+// take the user data that we get from our API and put it in local storage
 const initialState = {
+	// check local Storage for userInfo
 	userInfo: localStorage.getItem("userInfo")
 		? JSON.parse(localStorage.getItem("userInfo"))
 		: null,
@@ -18,7 +20,7 @@ const authSlice = createSlice({
 					JSON.stringify(action.payload)
 				);
 		},
-		clearCredentials: (state, action) => {
+		clearCredentials: (state) => {
 			state.userInfo = null;
 			localStorage.removeItem("userInfo");
 		},

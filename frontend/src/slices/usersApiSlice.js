@@ -3,6 +3,7 @@ import { apiSlice } from "./apiSlice";
 
 const USERS_URL = "/api/users";
 
+// this is where we make the request to our backend to login to authenticate, to get our profile, update the profile
 export const usersApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		login: builder.mutation({

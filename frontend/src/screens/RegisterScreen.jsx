@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Button, Row, Col } from "react-bootstrap";
-import FormContainer from "../components/FormContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Loader from "../components/Loader";
@@ -45,58 +43,94 @@ const RegisterScreen = () => {
 		}
 	};
 	return (
-		<FormContainer>
-			<h3>Sign Up</h3>
-			<Form onSubmit={submitHandler}>
-				<Form.Group className="my-2" controlId="name">
-					<Form.Label>Name</Form.Label>
-					<Form.Control
-						type="text"
-						placeholder="Enter Name"
-						value={name}
-						onChange={(e) => setName(e.target.value)}
-					></Form.Control>
-				</Form.Group>
-				<Form.Group className="my-2" controlId="email">
-					<Form.Label>Email Address</Form.Label>
-					<Form.Control
-						type="email"
-						placeholder="Enter Email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-					></Form.Control>
-				</Form.Group>
-				<Form.Group className="my-2" controlId="password">
-					<Form.Label>Password</Form.Label>
-					<Form.Control
-						type="password"
-						placeholder="Enter password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					></Form.Control>
-				</Form.Group>
-				<Form.Group className="my-2" controlId="confirmPassword">
-					<Form.Label>Confirm Password</Form.Label>
-					<Form.Control
-						type="password"
-						placeholder="Enter confirmPassword"
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-					></Form.Control>
-				</Form.Group>
+		<>
+			<div className="container px-4 px-lg-5">
+				<div className="row gx-4 gx-lg-5 justify-content-center">
+					<div className="col-lg-8 col-xl-6 text-center">
+						<h2 className="mt-0">Lets Get In Touch!!</h2>
+						<hr className="divider" />
+						<p className="text-muted mb-5">
+							Ready to start your next project with us? Send us a
+							messages and we will get back to you as soon as
+							possible!
+						</p>
+					</div>
+				</div>
+				<div className="row gx-4 gx-lg-5 justify-content-center mb-5">
+					<div className="col-lg-6">
+						<form onSubmit={submitHandler}>
+							<div className="form-floating mb-3">
+								<input
+									className="form-control"
+									id="name"
+									type="text"
+									value={name}
+									onChange={(e) => setName(e.target.value)}
+								/>
+								<label>Name</label>
+							</div>
+							<div className="form-floating mb-3">
+								<input
+									className="form-control"
+									id="email"
+									type="email"
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
+								/>
+								<label>Email Address</label>
+							</div>
 
-				{isLoading && <Loader />}
+							<div className="form-floating mb-3">
+								<input
+									className="form-control"
+									id="password"
+									type="password"
+									value={password}
+									onChange={(e) =>
+										setPassword(e.target.value)
+									}
+								/>
+								<label>Password</label>
+							</div>
 
-				<Button type="submit" variant="primary" className="mt-3">
-					Sign Up
-				</Button>
-				<Row className="py-3">
-					<Col>
-						Already have an account? <Link to="/login">Login</Link>
-					</Col>
-				</Row>
-			</Form>
-		</FormContainer>
+							<div className="form-floating mb-3">
+								<input
+									className="form-control"
+									id="confirmPassword"
+									type="password"
+									value={confirmPassword}
+									onChange={(e) =>
+										setConfirmPassword(e.target.value)
+									}
+								/>
+								<label>Confirm Password</label>
+							</div>
+
+							<div className="d-grid">
+								<button
+									className="btn btn-primary btn-xl "
+									type="submit"
+								>
+									Submit
+								</button>
+							</div>
+						</form>
+
+						<div className="d-grid mt-2">
+							<Link
+								to="/login"
+								className="btn btn-light btn-xl "
+								type="submit"
+							>
+								Click here to Sign In
+							</Link>
+						</div>
+
+						{isLoading && <Loader />}
+					</div>
+				</div>
+			</div>
+		</>
 	);
 };
 

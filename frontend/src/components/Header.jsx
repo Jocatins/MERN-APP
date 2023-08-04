@@ -30,7 +30,10 @@ const Header = () => {
 			<Navbar bg="dark" variant="dark" expand="sm" collapseOnSelect>
 				<Container>
 					<LinkContainer to="/">
-						<Navbar.Brand>MERN Auth</Navbar.Brand>
+						<Navbar.Brand>
+							<FaStoreAlt />
+							Sphinx
+						</Navbar.Brand>
 					</LinkContainer>
 
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />

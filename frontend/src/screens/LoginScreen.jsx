@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Button, Row, Col } from "react-bootstrap";
-import FormContainer from "../components/FormContainer";
 import { useLoginMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
@@ -40,42 +38,66 @@ const LoginScreen = () => {
 	};
 	return (
 		<>
-			{/* <div className="login template d-flex justify-content-center align-items-center 100-w vh-100 bg-primary"> */}
-			<FormContainer>
-				<h3>Sign In</h3>
-				<Form onSubmit={submitHandler}>
-					<Form.Group className="my-2 " controlId="email">
-						<Form.Label>Email Address</Form.Label>
-						<Form.Control
-							type="email"
-							placeholder="Enter Email"
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-						></Form.Control>
-					</Form.Group>
-					<Form.Group className="my-2" controlId="email">
-						<Form.Label>Password</Form.Label>
-						<Form.Control
-							type="password"
-							placeholder="Enter password"
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-						></Form.Control>
-					</Form.Group>
+			<div className="container px-4 px-lg-5">
+				<div className="row gx-4 gx-lg-5 justify-content-center">
+					<div className="col-lg-8 col-xl-6 text-center">
+						<h2 className="mt-0">Sign in, Lets Keep in touch!</h2>
+						<hr className="divider" />
+						<p className="text-muted mb-5">
+							To continue your explorations with us...
+						</p>
+					</div>
+				</div>
+				<div className="row gx-4 gx-lg-5 justify-content-center mb-5">
+					<div className="col-lg-6">
+						<form onSubmit={submitHandler}>
+							<div className="form-floating mb-3">
+								<input
+									className="form-control"
+									id="email"
+									type="email"
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
+								/>
+								<label>Email Address</label>
+							</div>
+							<div className="form-floating mb-3">
+								<input
+									className="form-control"
+									id="password"
+									type="password"
+									value={password}
+									onChange={(e) =>
+										setPassword(e.target.value)
+									}
+								/>
+								<label>Password</label>
+							</div>
 
-					{isLoading && <Loader />}
+							<div className="d-grid">
+								<button
+									className="btn btn-primary btn-xl "
+									type="submit"
+								>
+									Submit
+								</button>
+							</div>
+						</form>
 
-					<Button type="submit" variant="primary" className="mt-3">
-						Sign In
-					</Button>
-					<Row className="py-3">
-						<Col>
-							New Customer? <Link to="/register">Register</Link>
-						</Col>
-					</Row>
-				</Form>
-			</FormContainer>
-			{/* </div> */}
+						<div className="d-grid mt-2">
+							<Link
+								to="/register"
+								className="btn btn-light btn-xl "
+								type="submit"
+							>
+								Click here to Register
+							</Link>
+						</div>
+
+						{isLoading && <Loader />}
+					</div>
+				</div>
+			</div>
 		</>
 	);
 };

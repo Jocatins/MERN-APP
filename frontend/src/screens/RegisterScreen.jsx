@@ -23,7 +23,7 @@ const RegisterScreen = () => {
 	// We use useEffect to redirect the user to home screen
 	useEffect(() => {
 		if (userInfo) {
-			navigate("/");
+			navigate("/dashboard");
 		}
 	}, [navigate, userInfo]);
 

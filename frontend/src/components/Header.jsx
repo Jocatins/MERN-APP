@@ -11,8 +11,11 @@ import { useNavigate } from "react-router-dom";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { clearCredentials } from "../slices/authSlice";
 
+import "../assets/styles/header-styles.css";
+
 const Header = () => {
 	const { userInfo } = useSelector((state) => state.auth);
+	const { cartTotalQuantity } = useSelector((state) => state.cart);
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -80,10 +83,20 @@ const Header = () => {
 									<>
 										<LinkContainer to="/products">
 											<Nav.Link>
-												<FaShoppingBag />
-												Products
+												<div className="nav-bag">
+													<FaShoppingBag
+														style={{
+															width: 25,
+															height: 25,
+														}}
+													/>
+													<span className="bag-quantity">
+														{cartTotalQuantity}
+													</span>
+												</div>
 											</Nav.Link>
 										</LinkContainer>
+
 										<LinkContainer to="/login">
 											<Nav.Link>
 												<FaSignInAlt />

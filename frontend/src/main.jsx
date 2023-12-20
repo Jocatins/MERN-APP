@@ -20,6 +20,7 @@ import DashboardScreen from "./screens/DashboardScreen.jsx";
 import StoreScreen from "./screens/StoreScreen.jsx";
 import Store from "./screens/Store.jsx";
 import NotFound from "./screens/NotFound.jsx";
+import Cart from "./screens/Cart.jsx";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
 			<Route path="/login" element={<LoginScreen />} />
 			<Route path="/register" element={<RegisterScreen />} />
 			<Route path="/products" element={<Store />} />
+			<Route path="/cart" element={<Cart />} />
 			<Route path="*" element={<NotFound />} />
 			{/* Private Routes */}
 			<Route path="/" element={<PrivateRoute />}>

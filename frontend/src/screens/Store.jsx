@@ -2,6 +2,7 @@ import { useGetAllProductsQuery } from "../slices/productsApi";
 import "../assets/styles/main-store-styles.css";
 import { addToCart } from "../slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 // With createAsyncThunk -->
 // import { useSelector } from "react-redux";
@@ -13,10 +14,11 @@ function Store() {
 	const { data, error, isLoading } = useGetAllProductsQuery();
 
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const handleAddToCart = (product) => {
 		dispatch(addToCart(product));
-		// history.push("/cart");
+		navigate("/cart");
 	};
 
 	return (

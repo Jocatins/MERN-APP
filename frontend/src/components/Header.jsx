@@ -47,7 +47,7 @@ const Header = () => {
 						<LinkContainer to="/">
 							<Navbar.Brand>
 								<FaStoreAlt />
-								Sphinx
+								SphinX
 							</Navbar.Brand>
 						</LinkContainer>
 

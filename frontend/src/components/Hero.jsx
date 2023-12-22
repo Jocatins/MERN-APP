@@ -11,11 +11,11 @@ const Hero = () => {
 					<div className="col-lg-6">
 						<div className="mb-5 mb-lg-0 text-center text-lg-start">
 							<h1 className="display-1 lh-1 mb-3">
-								Showcase your app beautifully.
+								Shopping has gotten easier.
 							</h1>
 							<p className="lead fw-normal text-muted mb-5">
-								Launch your mobile app landing page faster with
-								this free, open source theme from Start
+								Purchase your items on a landing page faster
+								with this free, open source theme from Start
 								Bootstrap!
 							</p>
 							<div className="d-flex flex-column flex-lg-row align-items-center">

@@ -5,7 +5,7 @@ const Footer = () => {
 		<>
 			<div className="footer">
 				<div className="container">
-					<p style={{ color: "white" }}>Sphinx App 2023 &copy;</p>
+					<p style={{ color: "white" }}>Sphinx App 2024 &copy;</p>
 				</div>
 			</div>
 		</>

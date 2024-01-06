@@ -1,26 +1,30 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import {
-	createBrowserRouter,
-	createRoutesFromElements,
-	Route,
-	RouterProvider,
-} from "react-router-dom";
-import store from "./store.js";
-import { Provider } from "react-redux";
-import App from "./App.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
-import PrivateRoute from "./components/PrivateRoute.jsx";
+
+import {
+	Route,
+	RouterProvider,
+	createBrowserRouter,
+	createRoutesFromElements,
+} from "react-router-dom";
+
+import App from "./App.jsx";
+import CancelScreen from "./screens/CancelScreen.jsx";
+import Cart from "./screens/Cart.jsx";
+import DashboardScreen from "./screens/DashboardScreen.jsx";
 import HomeScreen from "./screens/HomeScreen.jsx";
 import LoginScreen from "./screens/LoginScreen.jsx";
-import RegisterScreen from "./screens/RegisterScreen.jsx";
-import ProfileScreen from "./screens/ProfileScreen.jsx";
-import DashboardScreen from "./screens/DashboardScreen.jsx";
-import StoreScreen from "./screens/StoreScreen.jsx";
-import Store from "./screens/Store.jsx";
 import NotFound from "./screens/NotFound.jsx";
-import Cart from "./screens/Cart.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
+import ProfileScreen from "./screens/ProfileScreen.jsx";
+import { Provider } from "react-redux";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import RegisterScreen from "./screens/RegisterScreen.jsx";
+import Store from "./screens/Store.jsx";
+import StoreScreen from "./screens/StoreScreen.jsx";
+import SuccessScreen from "./screens/SuccessScreen.jsx";
+import store from "./store.js";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -30,6 +34,8 @@ const router = createBrowserRouter(
 			<Route path="/register" element={<RegisterScreen />} />
 			<Route path="/products" element={<Store />} />
 			<Route path="/cart" element={<Cart />} />
+			<Route path="/cancel" element={<CancelScreen />} />
+			<Route path="/checkout-success" element={<SuccessScreen />} />
 			<Route path="*" element={<NotFound />} />
 			{/* Private Routes */}
 			<Route path="/" element={<PrivateRoute />}>

@@ -1,17 +1,20 @@
-import path from "path";
-import express from "express";
-import dotenv from "dotenv";
+import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
+
+import connectDB from "./config/db.js";
+import cookieParser from "cookie-parser";
 import cors from "cors";
+import dotenv from "dotenv";
+import express from "express";
+import path from "path";
+import products from "./products.js";
+import stripeRoute from "./routes/stripe.js";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
-import cookieParser from "cookie-parser";
-const port = process.env.PORT || 8700;
-import userRoutes from "./routes/userRoutes.js";
-import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
-// import DB connection
-import connectDB from "./config/db.js";
 
-import products from "./products.js";
+const port = process.env.PORT || 8700;
+
+// import DB connection
 
 connectDB();
 
@@ -33,6 +36,8 @@ app.use(cors(options));
 app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
+
+app.use("/api/stripe", stripeRoute);
 
 app.get("/products", (req, res) => {
 	res.send(products);

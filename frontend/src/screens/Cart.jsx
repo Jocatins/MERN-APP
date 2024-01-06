@@ -1,6 +1,6 @@
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import "../assets/styles/cart-styles.css";
+import "../assets/styles/cart-styles.css";
+
 import {
 	addToCart,
 	clearCart,
@@ -8,9 +8,11 @@ import {
 	getTotals,
 	removeFromCart,
 } from "../slices/cartSlice";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import "../assets/styles/cart-styles.css";
+import { Link } from "react-router-dom";
+import PayButton from "../components/PayButton";
+import { useEffect } from "react";
 
 function Cart() {
 	const cart = useSelector((state) => state.cart);
@@ -34,6 +36,26 @@ function Cart() {
 	const handleClearCart = () => {
 		dispatch(clearCart());
 	};
+
+	// const checkout = async () => {
+	// 	// console.log("clicked");
+	// 	await fetch("http://localhost:8700/checkout", {
+	// 		method: "POST",
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 		},
+	// 		body: JSON.stringify({ items: cart.item }),
+	// 	})
+	// 		.then((response) => {
+	// 			return response.json();
+	// 		})
+	// 		.then((response) => {
+	// 			if (response.url) {
+	// 				window.location.assign(response.url); // Forwarding user to Stripe
+	// 			}
+	// 		});
+	// };
+
 	return (
 		<>
 			<div className="cart-container">
@@ -71,75 +93,44 @@ function Cart() {
 						<div className="cart-items">
 							{cart.cartItems &&
 								cart.cartItems.map((cartItem) => (
-									<div
-										className="cart-item"
-										key={cartItem.id}
-									>
+									<div className="cart-item" key={cartItem.id}>
 										<div className="cart-product">
-											<img
-												src={cartItem.image}
-												alt={cartItem.name}
-											/>
+											<img src={cartItem.image} alt={cartItem.name} />
 											<div>
 												<h3>{cartItem.name}</h3>
 												<p>{cartItem.desc}</p>
-												<button
-													onClick={() =>
-														handleRemoveFromCart(
-															cartItem
-														)
-													}
-												>
+												<button onClick={() => handleRemoveFromCart(cartItem)}>
 													Remove
 												</button>
 											</div>
 										</div>
-										<div className="cart-product-price">
-											${cartItem.price}
-										</div>
+										<div className="cart-product-price">${cartItem.price}</div>
 										<div className="cart-product-quantity">
-											<button
-												onClick={() =>
-													handleDecreaseCart(cartItem)
-												}
-											>
+											<button onClick={() => handleDecreaseCart(cartItem)}>
 												-
 											</button>
-											<div className="count">
-												{cartItem.cartQuantity}
-											</div>
-											<button
-												onClick={() =>
-													handleAddToCart(cartItem)
-												}
-											>
+											<div className="count">{cartItem.cartQuantity}</div>
+											<button onClick={() => handleAddToCart(cartItem)}>
 												+
 											</button>
 										</div>
 										<div className="cart-product-total-price">
-											$
-											{cartItem.price *
-												cartItem.cartQuantity}
+											${cartItem.price * cartItem.cartQuantity}
 										</div>
 									</div>
 								))}
 						</div>
 						<div className="cart-summary">
-							<button
-								className="clear-btn"
-								onClick={() => handleClearCart()}
-							>
+							<button className="clear-btn" onClick={() => handleClearCart()}>
 								Clear Cart
 							</button>
 							<div className="cart-checkout">
 								<div className="subtotal">
 									<span>Subtotal</span>
-									<span className="amount">
-										${cart.cartTotalAmount}
-									</span>
+									<span className="amount">${cart.cartTotalAmount}</span>
 								</div>
 								<p>Taxes and shipping calculated at checkout</p>
-								<button>Check out</button>
+								<PayButton cartItems={cart.cartItems} />
 								<div className="continue-shopping">
 									<Link to="/products">
 										<svg

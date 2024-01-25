@@ -81,7 +81,7 @@ const Header = () => {
 									</>
 								) : (
 									<>
-										<LinkContainer to="/products">
+										<LinkContainer to="/cart">
 											<Nav.Link>
 												<div className="nav-bag">
 													<FaShoppingBag
